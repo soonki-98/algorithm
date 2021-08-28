@@ -1,12 +1,25 @@
-function solution(table, lan, pre) {
+const solution = (table, lan, pre) => {
     const result = [];
     table = table.map(el => el.split(" "));
-    for (let i in table) {
+    cal(result, table, lan, pre);
+    return sorted(result)
+}
+
+const scoreCal = (t, l, p) => {
+    return t.includes(l) ? (6 - t.indexOf(l)) * p : 0;
+}
+
+const sorted = (r) => {
+    return r.sort((a, b) => b[1] - a[1]).filter(el => el[1] === r[0][1]).sort()[0][0];
+}
+
+const cal = (r, t, l, p) => {
+    for (let i in t) {
         let score = 0;
-        for (let j in lan) {
-            if (table[i].includes(lan[j])) score += Math.abs(table[i].indexOf(lan[j]) - 6) * pre[j];
+        for (let j in l) {
+            score += scoreCal(t[i], l[j], p[j]);
         }
-        result.push([table[i][0], score]);
+        r.push([t[i][0], score]);
     }
-    return result.sort((a, b) => b[1] - a[1]).filter(el => el[1] === result[0][1]).sort()[0][0];
+    return r;
 }
