@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const sum = arr.reduce((acc, sum) => acc + sum, 0);
+        const notHim = [];
+        let spillOver = sum - 100;
+        for (let i = 0; i < arr.length; i++) {
+          arr.filter((el) => el !== arr[i] && el + arr[i] === spillOver)
+            .length > 0 && notHim.push(arr[i]);
+        }
+        return arr.filter((el) => el !== notHim[0] && el !== notHim[1]);
+      }
+
+      let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
