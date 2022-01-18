@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const a = Math.max(...s.map((el) => el.length));
+        return s.filter((el) => el.length === a);
+      }
+      let str = ["teacher", "time", "student", "beautiful", "good"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
