@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        const longest = Math.max(...[a, b, c]);
+        const sumOthers = [a, b, c]
+          .filter((el) => el < longest)
+          .reduce((acc, sum) => {
+            return acc + sum;
+          }, 0);
+        return longest < sumOthers ? "YES" : "NO";
+      }
+
+      console.log(solution(13, 33, 17));
+    </script>
+  </body>
+</html>
