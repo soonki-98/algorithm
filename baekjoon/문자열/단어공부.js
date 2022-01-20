@@ -1,18 +1,18 @@
-const input = ["zZa"];
+const input = "aabbccc";
 
 function solution() {
-  const result = input[0].split("").map((el) => el.toUpperCase());
+  const result = input.toUpperCase().split("");
   const obj = {};
+
   for (let i of result) {
-    obj[i] ? (obj[i] += 1) : (obj[i] = 1);
+    if (obj[i]) obj[i] += 1;
+    else obj[i] = 1;
   }
-  return Object.values(obj).filter(
-    (el) => el === Math.max(...Object.values(obj))
-  ).length > 1
-    ? "?"
-    : Object.keys(obj).filter(
-        (el) => obj[el] === Math.max(...Object.values(obj))
-      )[0];
+
+  const max = Math.max(...Object.values(obj));
+  return Object.values(obj).filter((el) => el === max).length === 1
+    ? Object.keys(obj).filter((el) => obj[el] === max)[0]
+    : "?";
 }
 
 console.log(solution());
